@@ -1,0 +1,6 @@
+{
+    "name": "fred-ogd",
+    "requirements": [
+        "fred-oss==0.61.0"
+    ]
+}
