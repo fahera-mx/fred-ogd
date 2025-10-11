@@ -1,0 +1,1 @@
+pycodestyle fred-ogd --max-line-length 120
