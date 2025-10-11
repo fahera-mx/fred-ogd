@@ -1,0 +1,1 @@
+(cd fred-ogd; coverage run -m pytest src/test)
