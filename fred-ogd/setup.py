@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 
 OGD_TARGET_PROJECT = os.environ.get(
-    "OGD_PROJECT",
+    "OGD_TARGET_PROJECT",
     default="main",
 )
 
@@ -117,6 +117,9 @@ setup(
         if key != "main"
     },
     include_package_data=True,
+    entry_points={
+        "console_scripts": ogd_project.spec.get("console_scripts", []),
+    },
     # Python version should be aligned to the latest databricks LTS runtime at the moment.
     # For more info: https://docs.databricks.com/aws/en/release-notes/runtime/ 
     # Reference: Databricks Runtime 16.4 LTS Using Python 3.12.3
