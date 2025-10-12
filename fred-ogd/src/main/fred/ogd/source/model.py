@@ -27,7 +27,7 @@ class Snapshot(BaseModel):
 
     @property
     def data_uuid(self) -> str:
-        return str(uuid.uuid5(uuid.NAMESPACE_OID, self.data if isinstance(self.data, str) else json.dumps(self.datam, default=str)))
+        return str(uuid.uuid5(uuid.NAMESPACE_OID, self.data if isinstance(self.data, str) else json.dumps(self.data, default=str)))
 
     def filename(self, ts_format: Optional[str] = None, include_uuid: bool = False) -> str:
         ts_format = ts_format or "%Y-%m-%d-%H-%M-%S"
