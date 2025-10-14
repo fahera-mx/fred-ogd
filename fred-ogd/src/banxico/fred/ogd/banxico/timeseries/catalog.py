@@ -23,7 +23,7 @@ class BanxicoTimeSeriesCatalog(enum.Enum):
 
     @property
     def request(self) -> requests.Response:
-        return self.request.resolve()
+        return self.serie.request.resolve()
 
     def fetch(self, values_only: bool = False) -> dict | list:
         if values_only:
