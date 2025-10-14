@@ -15,10 +15,10 @@ jobs:
     environment: PYPI Package Publishing
     strategy:
       matrix:
-        path:
-          - fred-ogd
+        proj:
+          - banxico
     if: github.event.pull_request.merged == true
-    name: Python Package Build and Publish for ${{ matrix.path }}
+    name: Python Package Build and Publish for ${{ matrix.proj }}
     runs-on: ubuntu-latest
     steps:
       - name: Clone Repo
@@ -38,7 +38,7 @@ jobs:
           TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
           GH_BRANCH: ${{ github.ref }}
-          OGD_TARGET_PROJECT: main
+          OGD_TARGET_PROJECT: ${{ matrix.proj }}
         run: |
-          (cd ${{ matrix.path }}; python setup.py sdist)
-          twine upload --verbose --skip-existing ${{ matrix.path }}/dist/fred_ogd-*.whl
+          (cd fred-ogd; python setup.py sdist)
+          twine upload --verbose --skip-existing fred-ogd/dist/fred_ogd_${{ matrix.proj }}-*.whl
