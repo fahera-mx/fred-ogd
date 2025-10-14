@@ -41,4 +41,4 @@ jobs:
           OGD_TARGET_PROJECT: ${{ matrix.proj }}
         run: |
           (cd fred-ogd; python setup.py sdist)
-          twine upload --verbose --skip-existing fred-ogd/dist/fred_ogd_${{ matrix.proj }}-*.whl
+          twine upload --verbose --skip-existing fred-ogd/dist/fred_ogd_${{ matrix.proj }}-*
