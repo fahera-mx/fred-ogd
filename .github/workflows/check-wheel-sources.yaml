@@ -1,4 +1,4 @@
-name: Check Creation of Wheel Package
+name: Check Creation of Wheel Package Sources
 on: [pull_request]
 
 jobs:
