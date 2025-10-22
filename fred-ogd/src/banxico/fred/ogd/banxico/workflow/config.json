@@ -1,0 +1,11 @@
+{
+    "name": "banxico-series",
+    "specs": [
+        {
+            "name": "usd-mxn-group",
+            "parameters": {
+                "group": "USD_MXN"
+            }
+        }
+    ]
+}
