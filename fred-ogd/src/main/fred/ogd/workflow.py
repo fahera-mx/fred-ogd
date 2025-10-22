@@ -33,7 +33,6 @@ class WorkflowInterface(WorkerAbstractInterface):
             version=version,
             config=config,
         )
-    
     def get_edags(self, **kwargs) -> dict[str, Callable]:
         from fred.edag.executor import Executor
         return {
