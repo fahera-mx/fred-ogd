@@ -23,7 +23,6 @@ class WorkflowInterface(WorkerAbstractInterface):
             specs=config.get("specs", []),
             version=version,
         )
-    
     @classmethod
     def from_file(cls, version: str, filepath: str) -> "WorkflowInterface":
         import json
