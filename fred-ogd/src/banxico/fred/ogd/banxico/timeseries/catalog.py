@@ -6,6 +6,14 @@ from fred.ogd.banxico.timeseries.interface import BanxicoTimeSeriesInterface
 from fred.ogd.banxico.timeseries._usd_mxn import BanxicoTimeSeriesUsdMxn
 
 
+class BanxicoTimeSeriesGroup(enum.Enum):
+    USD_MXN = BanxicoTimeSeriesUsdMxn
+
+    @property
+    def classref(self) -> type[BanxicoTimeSeriesInterface]:
+        return self.value
+
+
 class BanxicoTimeSeriesCatalog(enum.Enum):
     USD_MXN = BanxicoTimeSeriesUsdMxn.from_config(serie="USD_MXN")
     USD_MXN_DOS = BanxicoTimeSeriesUsdMxn.from_config(serie="USD_MXN_DOS")
@@ -20,6 +28,15 @@ class BanxicoTimeSeriesCatalog(enum.Enum):
     @property
     def serie(self) -> BanxicoTimeSeriesInterface:
         return self.value
+
+    def classgroup(self, ref: type[BanxicoTimeSeriesInterface]) -> bool:
+        return issubclass(ref, BanxicoTimeSeriesInterface)
+
+    @classmethod
+    def group(cls, name: str | BanxicoTimeSeriesGroup) -> list["BanxicoTimeSeriesCatalog"]:
+        classref = BanxicoTimeSeriesGroup[name].classref \
+            if isinstance(name, str) else name.classref
+        return [item for item in cls if item.classgroup(classref)]
 
     @property
     def request(self) -> requests.Response:
