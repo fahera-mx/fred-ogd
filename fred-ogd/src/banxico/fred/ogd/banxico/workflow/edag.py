@@ -40,11 +40,6 @@ def layer_gold(silver_table: str) -> str:
 class Workflow(WorkflowInterface):
 
     @property
-    def name(self) -> str:
-        from fred.ogd.banxico.settings import FRDOGD_SOURCE_FULLNAME
-        return FRDOGD_SOURCE_FULLNAME
-
-    @property
     def plan(self) -> Plan:
         return (
             timeseries[...]
