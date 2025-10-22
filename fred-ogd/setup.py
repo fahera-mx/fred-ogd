@@ -21,8 +21,8 @@ class OGDProject:
     @classmethod
     def project_names(cls) -> list[str]:
         return [
-            proj for proj in os.listdir(os.path.join("src", "configs"))
-            if os.path.isdir(os.path.join("src", "configs", proj))
+            proj for proj in os.listdir("configs")
+            if os.path.isdir(os.path.join("configs", proj))
         ]
 
     @classmethod
@@ -31,9 +31,9 @@ class OGDProject:
             proj: cls(
                 name=proj,
                 codebase_path=os.path.join("src", proj),
-                configs_path=os.path.join("src", "configs", proj),
-                spec_path=os.path.join("src", "configs", proj, "spec.json"),
-                readme_path=os.path.join("src", "configs", proj, "README.md"),
+                configs_path=os.path.join("configs", proj),
+                spec_path=os.path.join("configs", proj, "spec.json"),
+                readme_path=os.path.join("configs", proj, "README.md"),
             )
             for proj in cls.project_names()
         }
